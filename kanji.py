@@ -26,6 +26,13 @@ class Plugin(RestExtension):
 		return super(Plugin, self).set_site(site)
 
 def get_ruby_shortcode(data=None, post=None, site=None, furigana=None, lang=None):
+	"""Provide a reStructuredText directive to create kanji with furigana.	
+	Usage:	
+		.. kanji:: 日 本 語
+			:furigana: に ほん ご	
+	Or:
+		{{% kanji furigana=に|ほん|ご %}}日 本 語{{% /kanji %}}
+	"""
 	return get_ruby(data.split(" "), furiganas=furigana.replace('|', ' ')), []
 	
 def get_ruby(kanjis=[], furiganas=""):
